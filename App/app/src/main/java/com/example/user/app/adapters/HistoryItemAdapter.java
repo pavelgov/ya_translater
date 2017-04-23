@@ -29,6 +29,12 @@ public class HistoryItemAdapter extends RecyclerView.Adapter<HistoryItemAdapter.
         this.listener = listener;
     }
 
+    public void addAll(List<HistoryTranslate> newList){//обновление списка
+        list.clear();
+        list.addAll(newList);
+        notifyDataSetChanged();//обновить данные на экране
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
@@ -41,7 +47,8 @@ public class HistoryItemAdapter extends RecyclerView.Adapter<HistoryItemAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         HistoryTranslate item = list.get(position);
         holder.binding.getRoot().setTag(item.getBeforeTranslate());
-        holder.binding.beforeTranslate.setText(item.getTranslate());
+        holder.binding.beforeTranslate.setText(item.getBeforeTranslate());
+        holder.binding.afterTranslate.setText(item.getTranslate());
     }
 
     @Override

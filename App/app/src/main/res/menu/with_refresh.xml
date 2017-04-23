@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_translate"
+        android:orderInCategory="100"
+        android:title="@string/text_translate"
+        android:icon="@drawable/lang_w"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_clear"
+        android:orderInCategory="100"
+        android:title="@string/text_clear"
+        android:icon="@drawable/close_w"
+        app:showAsAction="always" />
+</menu>

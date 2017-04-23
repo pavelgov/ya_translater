@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App</string>
+    <string name="app_name">Переводчик</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,4 +11,32 @@
     <string name="settings">Настройки</string>
     <string name="about">О программе</string>
     <string name="search_history">Поиск по истории</string>
+    <string name="in_fav">В избранное</string>
+    <string name="language_translate">Яыки перевода:</string>
+    <string name="action_remove">Удалить</string>
+    <string name="date_translate">Дата перевода:</string>
+    <string name="info_delete">Запись была успешно удалена!</string>
+    <string name="search_title">Поиск..</string>
+    <string name="app_label">Переводчик</string>
+    <string name="del_fav">Убрать из избранного</string>
+    <string name="setting1">Автоматический перевод текста при вводе</string>
+    <string name="del_history">Очистить историю</string>
+    <string name="info_delete_all">История очищена</string>
+    <string name="enter_line">Введите строку</string>
+
+    <string name="title_activity_splash">Splash</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="load_langs">Загрузка доступных языков...</string>
+    <string name="want_del_all">Вы уверены, что хотите удалить все запии?</string>
+    <string name="alert">Внимание</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="error_no_internet">Отсутствует соединение с интернетом</string>
+    <string name="not_found_lang"><![CDATA[<Язык не определен>]]></string>
+    <string name="text_copy">Перевод скопирован в буффер обмена</string>
+    <string name="text_translate_to">Направление перевода</string>
+    <string name="text_clear">Очистить ввод</string>
+    <string name="text_wait_translate">(Ведётся поиск перевода)</string>
 </resources>

@@ -8,10 +8,10 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 /**
+ * Добавление своих шрифтов
  * Created by User on 20.04.2017.
  */
-
-public class MyFontBold extends android.support.v7.widget.AppCompatTextView {
+public class MyFontBold extends TextView {
     private Typeface typeface = null;
 
     public MyFontBold(Context context) {
@@ -29,11 +29,14 @@ public class MyFontBold extends android.support.v7.widget.AppCompatTextView {
         init();
     }
 
-
-
+    @TargetApi(21)
+    public MyFontBold(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        init();
+    }
     private void init(){
         if (typeface == null) {
-            typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/bold_f.ttf");
+            typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Phenomena-Bold.otf");
 
         }
         setTypeface(typeface);

@@ -21,14 +21,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Case;
+import io.realm.RealmChangeListener;
+import io.realm.RealmList;
 import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 /**
  * Created by User on 12.04.2017.
  */
 
-public class Favourites extends BaseFragment {
-    FragHistoryBinding binding;
+public class Favourites extends BaseSearchFragment {
+    private FragHistoryBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,50 +40,16 @@ public class Favourites extends BaseFragment {
         binding = DataBindingUtil.bind(view);
         binding.rec.setLayoutManager(new LinearLayoutManager(getActivity()));
         search(null);
-        binding.searchHistory.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                search(s.toString());
-            }
-        });
         return view;
     }
-    private void search(String line){
-        List<HistoryTranslate> historyTranslate= new ArrayList<>();
-        RealmQuery realmModel = realm
-                .where(HistoryTranslate.class)
-                .equalTo("favour",true);
 
-        if (line!=null){
-            realmModel.beginGroup()
-                    .contains("beforeTranslate", line, Case.INSENSITIVE)
-                    .or()
-                    .contains("translate", line, Case.INSENSITIVE)
-                    .endGroup();
-        }
-        historyTranslate=realmModel.findAll();
-        HistoryItemAdapter historyItemAdapter = new HistoryItemAdapter(historyTranslate, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String tag = (String) v.getTag();
-                Intent intent = new Intent(getActivity(), ItemTranslateActivity.class);
-                intent.putExtra("primaryKey", tag);
-                startActivity(intent);
-            }
-        });
+    /**
+     * Поиск записей по параматрам
+     * @param line
+     */
+    @Override
+    protected void search(final String line){
+        historyItemAdapter.addAll(selectList(line,true));
         binding.rec.setAdapter(historyItemAdapter);
-
-
     }
-
 }

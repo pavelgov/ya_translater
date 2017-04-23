@@ -4,25 +4,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_translate"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/lang"
             android:title="@string/text_translate" />
         <item
             android:id="@+id/nav_favourites"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/fav"
             android:title="@string/favourites" />
         <item
             android:id="@+id/nav_history"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/history"
             android:title="@string/history" />
 
         <item
             android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/setting"
             android:title="@string/settings" />
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/about" />
     </group>
 
 </menu>

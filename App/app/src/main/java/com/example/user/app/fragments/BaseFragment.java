@@ -1,9 +1,11 @@
 package com.example.user.app.fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import com.example.user.app.MyApp;
 import com.example.user.app.web.WebFunction;
 
 import java.util.ArrayList;
@@ -15,13 +17,15 @@ import io.realm.Realm;
  */
 
 public abstract class BaseFragment extends Fragment {
-    public Realm realm;
+    protected Realm realm;
     public WebFunction webFunction = new WebFunction();
+    protected SharedPreferences mySharedPreferences =null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        realm = Realm.getDefaultInstance(); // открытие БД
+        realm = Realm.getDefaultInstance(); // открытие ORM
+        mySharedPreferences = ((MyApp)getActivity().getApplication()).mySharedPreferences;
     }
 
     @Override

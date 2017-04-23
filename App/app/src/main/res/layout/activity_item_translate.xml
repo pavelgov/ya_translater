@@ -1,51 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-        <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.user.app.activities.ItemTranslateActivity">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:padding="8dp">
 
 
-
-                <TextView
+                <com.example.user.app.views.MyFontLight
                     android:id="@+id/before_translate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    android:gravity="left"
                     android:text="TextView" />
 
-                <TextView
-                    android:id="@+id/language"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="TextView" />
 
-                <TextView
+                <com.example.user.app.views.MyFontBold
                     android:id="@+id/after_translate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:layout_marginTop="8dp"
+                    android:gravity="right"
                     android:text="TextView" />
 
-                <Button
-                    android:id="@+id/favourite"
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#44000000" />
+
+                <com.example.user.app.views.MyFontRegular
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Button" />
+                    android:layout_marginTop="16dp"
+                    android:gravity="left"
+                    android:text="@string/text_translate_to"
+                    android:textColor="@color/baseLight" />
+
+                <com.example.user.app.views.MyFontRegular
+                    android:id="@+id/language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    android:gravity="left"
+                    android:textColor="@color/baseDark" />
+
+                <com.example.user.app.views.MyFontRegular
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="left"
+                    android:text="@string/date_translate"
+                    android:textColor="@color/baseLight" />
+
+                <com.example.user.app.views.MyFontRegular
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    android:layout_marginTop="8dp"
+                    android:gravity="left"
+                    android:textColor="@color/baseDark" />
             </LinearLayout>
         </ScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/favourite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="16dp"
+            android:src="@drawable/fav"
+            android:tint="@color/white"/>
+
+        <Button
+            android:id="@+id/del_favourite"
+            style="@style/ButtonPrimaryColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="16dp"
+            android:text="@string/del_fav"/>
     </FrameLayout>
 </layout>

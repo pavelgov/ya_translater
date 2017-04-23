@@ -1,5 +1,8 @@
 package com.example.user.app.web;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.example.user.app.models.DetectLanguage;
@@ -12,18 +15,19 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
+ * Класс для обработки запросов, и создания базового подключения к сайту
  * Created by User on 14.04.2017.
  */
-
 public class WebFunction {
 
-    Retrofit retrofit = new Retrofit.Builder()
+
+    private Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://translate.yandex.net")
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
-    WebLink service = retrofit.create(WebLink.class);
-    public final String KEY = "trnsl.1.1.20170414T143621Z.7e322295b6453c58.acd5bbb78994b197ef1709e241a4dfc7c2c08d03";
+    private WebLink service = retrofit.create(WebLink.class);
+    private final String KEY = "trnsl.1.1.20170414T143621Z.7e322295b6453c58.acd5bbb78994b197ef1709e241a4dfc7c2c08d03";
 
 
     public  void getLanguages( Callback<Languages> callback){
@@ -45,9 +49,14 @@ public class WebFunction {
 
         }
     }
-    public  Call<Translate> translate(String text, Callback<Translate> callback){
+    public  Call<Translate> translate(String text, String lang, Callback<Translate> callback){
         try{
-            Call<Translate> repos = service.translate(KEY,text,"en-ru","plain");
+            Call<Translate> repos;
+            if (lang == null)
+                 repos = service.translate(KEY,text,"en-ru","plain");
+            else
+                repos = service.translate(KEY,text,lang,"plain");
+
             repos.enqueue(callback);
             return repos;
         }catch (Exception e){
@@ -56,4 +65,22 @@ public class WebFunction {
         }
         return null;
     }
+
+    /**
+     * Проверка наличия активного Интернет соединения
+     * @param context
+     * @return
+     */
+    public boolean isOnline(Context context) {
+        ConnectivityManager connManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
+
+        if(networkInfo != null && networkInfo.isConnectedOrConnecting()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 }

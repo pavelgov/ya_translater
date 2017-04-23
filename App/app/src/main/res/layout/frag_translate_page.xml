@@ -1,30 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+        android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/tr_text"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:weightSum="1">
 
-        <Button
-            android:id="@+id/translate_go"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            <EditText
+                android:id="@+id/tr_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:background="@drawable/border_black"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/enter_line"
+                android:inputType="text|textMultiLine"
+                android:maxLines="8"
+                android:minHeight="100dp"
+                android:minLines="4"
+                android:padding="8dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textCursorDrawable="@drawable/coursor_accent" />
 
-        <TextView
-            android:id="@+id/translate_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-             />
-    </LinearLayout>
+            <com.example.user.app.views.MyFontRegular
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:text="@string/text_translate_to"
+                android:textColor="@color/baseLight" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3" />
+
+                <ImageView
+                    android:id="@+id/change"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="4"
+                    android:alpha="0.37"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_arrow_forward" />
+
+                <Spinner
+                    android:id="@+id/to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.example.user.app.views.MyFontRegular
+                    android:id="@+id/myFontRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/text_translate"
+                    android:textColor="@color/baseLight" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/myFontRegular"
+                    android:layout_alignTop="@+id/myFontRegular"
+                    android:layout_toEndOf="@+id/myFontRegular"
+                    android:layout_toRightOf="@+id/myFontRegular"
+                    android:indeterminate="false"
+                    android:visibility="gone" />
+
+                <com.example.user.app.views.MyFontRegular
+                    android:id="@+id/progressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignBaseline="@+id/myFontRegular"
+                    android:layout_alignBottom="@+id/myFontRegular"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@+id/progressBar"
+                    android:layout_toRightOf="@+id/progressBar"
+                    android:gravity="center"
+                    android:text="@string/text_wait_translate"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+                    android:textColor="@color/baseLight"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#44000000"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:id="@+id/translate_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:minHeight="100dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+                android:padding="8dp"
+                android:text="" />
+        </LinearLayout>
+    </ScrollView>
 </layout>
